@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends' Birthdays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: hsla(87, 48%, 62%, 0.592);
+            margin: 0;
+            padding: 0;
+            padding-left: 100px;
+            padding-right: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            display: flex;
+        }
+        .headder{
+            width: 40%;
+        }
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+
+            
+        }
+        
+        .category {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .category form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .category label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .category select, 
+        .category button {
+            margin-bottom: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        .category select:focus, 
+        .category input[type="text"]:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+        }
+        
+        .category button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .category button:hover {
+            background-color: #0056b3;
+        }
+        
+        .results {
+            margin-top: 20px;
+            width: 60%;
+
+        }
+        
+        .results-grid {
+            display: flex;
+            flex-flow: row-reverse wrap;
+            
+            gap: 10px;
+        }
+        
+        .results-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 130px;
+            height: 170px;
+        }
+        
+        .results-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        
+        .results-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="headder">
+        
+        <div class="category">
+            <h1>Friend's Birthday Reminder<br></h1>
+            <form name="category" action="/" method="POST">
+                <label for="category">Choose your friend's category:</label>
+                <select id="category" name="category">
+                    <option value="sc">--select category--</option>
+                    <option value="college friend">College friends</option>
+                    <option value="school friend">School friends</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <div class="results">
+            {% if result %}
+                
+                <div class="results-grid">
+                    
+                    {% for row in result %}
+                        <div class="results-item">
+                            <img src="{{ row[2] }}" alt="Image">
+                            <p>Name: {{ row[0] }}</p>
+                            <p>Month: {{ row[1] }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+           
+            {% endif %}
+    </div>
+    
+</body>
+</html>
+
+
+
